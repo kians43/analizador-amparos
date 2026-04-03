@@ -1,0 +1,39 @@
+{
+  "fecha_inicio": "2026-04-02T09:28:36.462586",
+  "fecha_fin": "2026-04-02T14:13:13.300227",
+  "modelo": "claude-sonnet-4-5",
+  "total_sentencias_corpus": 951,
+  "sentencias_procesadas": 951,
+  "sentencias_con_error": 2,
+  "hash_corpus": "0ba4258553ff50f7d14e659dff9dafde",
+  "prompt_utilizado": "Eres un asistente jurídico especializado en análisis de sentencias de amparo mexicanas.\n\nAnaliza el siguiente texto de una sentencia y determina si contiene cada uno de los cinco patrones jurídicos descritos a continuación.\n\nPara cada patrón indica:\n- \"presente\": true si el patrón está claramente presente en el texto, false si no lo está\n- \"fragmento\": el fragmento textual LITERAL de la sentencia donde aparece el patrón (copiado exactamente del texto, sin modificar ni parafrasear), o \"\" si el patrón no está presente\n\nPATRONES A DETECTAR:\n\nP1 — OMISIÓN ADMINISTRATIVA\nLa sentencia tiene origen en que la autoridad no respondió un escrito o no cumplió una sentencia previa. El amparo se interpone por omisión de respuesta o negativa ficta.\n\nP2 — CLÁUSULA DE PRECARIEDAD\nEl juzgador inserta en la resolución una justificación de la falta de integración física del expediente por insuficiencia de insumos materiales básicos del juzgado (tóner, hojas, papel).\n\nP3 — RECHAZO DE DOCUMENTO DIGITAL\nEl juzgador descalifica o rechaza documentos electrónicos oficiales por no cumplir con requisitos propios del documento en papel: falta de firma manuscrita, falta de sello físico, o los trata como copias simples sin valor probatorio.\n\nP4 — SESGO DE ANCLAJE EN SOBRESEIMIENTO\nEn una resolución de sobreseimiento, el texto no muestra ponderación activa de los argumentos del quejoso frente a la negativa categórica de la autoridad responsable. El sobreseimiento parece derivar automáticamente del informe previo de la autoridad.\n\nP5 — NO TRANSCRIPCIÓN DE CONCEPTOS DE VIOLACIÓN\nLa sentencia aplica explícitamente la práctica de no transcribir los conceptos de violación o agravios del quejoso, invocando que es innecesaria su reproducción para cumplir con congruencia y exhaustividad.\n\nINSTRUCCIONES IMPORTANTES:\n- El fragmento debe ser texto LITERAL de la sentencia, nunca una paráfrasis generada por ti\n- Si el patrón no está presente, el fragmento debe ser exactamente \"\"\n- Responde ÚNICAMENTE con el objeto JSON, sin texto adicional antes ni después, sin bloques de código markdown\n- Si el texto no es una sentencia de amparo analizable, marca todos los patrones como false\n\nFormato de respuesta requerido (sin variaciones):\n{\n  \"p1_omision\":          {\"presente\": true/false, \"fragmento\": \"...\"},\n  \"p2_precariedad\":      {\"presente\": true/false, \"fragmento\": \"...\"},\n  \"p3_documento_digital\":{\"presente\": true/false, \"fragmento\": \"...\"},\n  \"p4_sobreseimiento\":   {\"presente\": true/false, \"fragmento\": \"...\"},\n  \"p5_no_transcripcion\": {\"presente\": true/false, \"fragmento\": \"...\"}\n}\n\nSENTENCIA A ANALIZAR:\n---\n{texto}\n---",
+  "patrones_definidos": {
+    "p1_omision": "P1 — Omisión administrativa: La sentencia tiene origen en que la autoridad no respondió un escrito o no cumplió una sentencia previa. El amparo se interpone por omisión de respuesta o negativa ficta.",
+    "p2_precariedad": "P2 — Cláusula de precariedad: El juzgador inserta en la resolución una justificación de la falta de integración física del expediente por insuficiencia de insumos materiales básicos del juzgado (tóner, hojas, papel).",
+    "p3_documento_digital": "P3 — Rechazo de documento digital: El juzgador descalifica o rechaza documentos electrónicos oficiales por no cumplir con requisitos propios del documento en papel: falta de firma manuscrita, falta de sello físico, o los trata como copias simples sin valor probatorio.",
+    "p4_sobreseimiento": "P4 — Sesgo de anclaje en sobreseimiento: En una resolución de sobreseimiento, el texto no muestra ponderación activa de los argumentos del quejoso frente a la negativa categórica de la autoridad responsable. El sobreseimiento parece derivar automáticamente del informe previo de la autoridad.",
+    "p5_no_transcripcion": "P5 — No transcripción de conceptos de violación: La sentencia aplica explícitamente la práctica de no transcribir los conceptos de violación o agravios del quejoso, invocando que es innecesaria su reproducción para cumplir con congruencia y exhaustividad."
+  },
+  "resultados_por_patron": {
+    "p1_omision": {
+      "total": 374,
+      "porcentaje": 39.33
+    },
+    "p2_precariedad": {
+      "total": 58,
+      "porcentaje": 6.1
+    },
+    "p3_documento_digital": {
+      "total": 11,
+      "porcentaje": 1.16
+    },
+    "p4_sobreseimiento": {
+      "total": 267,
+      "porcentaje": 28.08
+    },
+    "p5_no_transcripcion": {
+      "total": 177,
+      "porcentaje": 18.61
+    }
+  }
+}
